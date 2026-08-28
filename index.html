@@ -3,437 +3,411 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Java/Spring 백엔드 개발자 김현승의 포트폴리오. 결제·환불·정산, 동시성 제어, 성능 개선, AI 검수, AWS 운영 경험을 소개합니다." />
-  <title>김현승 | Backend Developer Portfolio</title>
+  <meta name="description" content="Java/Spring 백엔드 개발자 김현승의 온라인 이력서" />
+  <title>김현승 | Backend Developer Resume</title>
   <style>
     :root {
-      --bg: #f6f7f9;
-      --surface: #ffffff;
-      --text: #15171a;
-      --muted: #68707b;
-      --line: #e5e8ec;
-      --accent: #176b55;
-      --accent-soft: #eaf5f1;
-      --dark: #101820;
-      --shadow: 0 16px 40px rgba(16, 24, 32, 0.07);
-      --radius-lg: 26px;
-      --radius-md: 18px;
+      --text: #17191c;
+      --muted: #6b7280;
+      --line: #e7e9ee;
+      --soft: #f6f7f9;
+      --accent: #5b5bd6;
+      --accent-soft: #f0efff;
+      --link: #4f46e5;
+      --max: 980px;
     }
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
+      background: #fff;
       color: var(--text);
-      background: var(--bg);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Pretendard, Roboto, "Noto Sans KR", sans-serif;
-      line-height: 1.7;
+      line-height: 1.75;
       word-break: keep-all;
+      -webkit-font-smoothing: antialiased;
     }
-
     a { color: inherit; text-decoration: none; }
-    .wrap { width: min(1160px, calc(100% - 40px)); margin: 0 auto; }
+    a:hover { color: var(--link); }
 
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(14px);
-      background: rgba(246, 247, 249, 0.88);
-      border-bottom: 1px solid rgba(229, 232, 236, 0.9);
+    .page {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+      padding: 72px 0 100px;
     }
-    .nav-inner {
-      min-height: 68px;
+
+    .profile {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 36px;
+      align-items: start;
+      padding-bottom: 42px;
+      border-bottom: 1px solid var(--line);
+    }
+    .name {
+      margin: 0 0 6px;
+      font-size: 42px;
+      line-height: 1.2;
+      letter-spacing: -0.045em;
+    }
+    .role {
+      margin: 0 0 22px;
+      color: #42474f;
+      font-size: 18px;
+      font-weight: 650;
+    }
+    .headline {
+      max-width: 720px;
+      margin: 0;
+      color: #4f5660;
+      font-size: 16px;
+    }
+    .links {
       display: flex;
-      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      margin-top: 22px;
+      color: var(--link);
+      font-size: 14px;
+      font-weight: 650;
+    }
+    .status {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 750;
+      white-space: nowrap;
+    }
+
+    section {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 34px;
+      padding: 42px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .section-title {
+      margin: 0;
+      font-size: 16px;
+      letter-spacing: -0.02em;
+    }
+    .section-body { min-width: 0; }
+
+    .intro p {
+      margin: 0 0 12px;
+      color: #3f454d;
+    }
+    .intro p:last-child { margin-bottom: 0; }
+
+    .skills { display: flex; flex-wrap: wrap; gap: 9px; }
+    .skill {
+      padding: 7px 11px;
+      border-radius: 8px;
+      background: var(--soft);
+      color: #343940;
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    .item { padding: 0 0 34px; }
+    .item:last-child { padding-bottom: 0; }
+    .item + .item { padding-top: 34px; border-top: 1px solid #f0f1f3; }
+    .item-head {
+      display: flex;
       justify-content: space-between;
       gap: 20px;
+      align-items: flex-start;
+      margin-bottom: 10px;
     }
-    .brand { font-weight: 800; letter-spacing: -0.02em; }
-    .nav-links { display: flex; gap: 22px; color: var(--muted); font-size: 14px; }
-    .nav-links a:hover { color: var(--text); }
-
-    .hero { padding: 88px 0 44px; }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.35fr 0.65fr;
-      gap: 28px;
-      align-items: stretch;
-    }
-    .hero-main, .hero-side {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow);
-    }
-    .hero-main { padding: 54px; }
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 7px 12px;
-      border-radius: 999px;
-      color: var(--accent);
-      background: var(--accent-soft);
-      font-size: 13px;
-      font-weight: 700;
-      margin-bottom: 22px;
-    }
-    h1 {
+    .item-title-wrap { min-width: 0; }
+    .item-title {
       margin: 0;
-      font-size: clamp(40px, 6vw, 66px);
-      line-height: 1.12;
-      letter-spacing: -0.05em;
+      font-size: 20px;
+      line-height: 1.4;
+      letter-spacing: -0.025em;
     }
-    .hero-title-accent { color: var(--accent); }
-    .hero-copy {
-      margin: 26px 0 0;
-      max-width: 760px;
-      color: #4d5560;
-      font-size: 18px;
-    }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 46px;
-      padding: 0 17px;
-      border-radius: 12px;
-      border: 1px solid var(--line);
-      background: #fff;
-      font-weight: 700;
+    .item-subtitle {
+      margin: 4px 0 0;
+      color: var(--muted);
       font-size: 14px;
     }
-    .button.primary { background: var(--dark); color: #fff; border-color: var(--dark); }
-    .button:hover { transform: translateY(-1px); }
-
-    .hero-side {
-      padding: 34px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      background: var(--dark);
-      color: #fff;
+    .period {
+      color: var(--muted);
+      font-size: 13px;
+      white-space: nowrap;
+      padding-top: 3px;
     }
-    .hero-side .label { color: #aab4bf; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; }
-    .hero-side h2 { margin: 8px 0 18px; font-size: 27px; line-height: 1.35; letter-spacing: -0.03em; }
-    .hero-side p { margin: 0; color: #cbd2d8; font-size: 14px; }
-    .stack { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 26px; }
-    .stack span {
-      padding: 7px 10px;
-      border: 1px solid #33404b;
-      border-radius: 999px;
-      color: #e5e9ec;
+    .item-summary {
+      margin: 0 0 12px;
+      color: #4d535b;
+      font-size: 14px;
+    }
+    .bullets {
+      margin: 12px 0 0;
+      padding-left: 20px;
+      color: #3f454d;
+      font-size: 14px;
+    }
+    .bullets li { margin: 7px 0; }
+    .bullets strong { color: #20242a; }
+    .tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 14px;
+    }
+    .tech span {
+      color: #666d76;
       font-size: 12px;
+      padding: 4px 8px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+    }
+    .project-link {
+      display: inline-block;
+      margin-top: 13px;
+      color: var(--link);
+      font-size: 13px;
+      font-weight: 650;
     }
 
-    .metrics { padding: 16px 0 26px; }
-    .metric-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-    .metric {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-md);
-      padding: 24px;
-    }
-    .metric strong { display: block; font-size: 25px; letter-spacing: -0.03em; }
-    .metric span { color: var(--muted); font-size: 13px; }
-
-    section { padding: 72px 0 0; }
-    .section-head { display: flex; justify-content: space-between; gap: 24px; align-items: end; margin-bottom: 24px; }
-    .section-head h2 { margin: 0; font-size: 34px; letter-spacing: -0.04em; }
-    .section-head p { margin: 0; color: var(--muted); max-width: 620px; font-size: 14px; }
-
-    .strength-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-    .strength {
-      min-height: 220px;
-      padding: 25px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius-md);
-      background: var(--surface);
-    }
-    .strength .num { color: var(--accent); font-weight: 800; font-size: 13px; }
-    .strength h3 { margin: 12px 0 9px; font-size: 19px; }
-    .strength p { margin: 0; color: var(--muted); font-size: 14px; }
-
-    .project-list { display: grid; gap: 18px; }
-    .project {
-      border-radius: 24px;
-      background: var(--surface);
-      border: 1px solid var(--line);
-      overflow: hidden;
+    .compact-grid {
       display: grid;
-      grid-template-columns: 0.78fr 1.22fr;
-      min-height: 380px;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px 34px;
     }
-    .project-left { padding: 34px; background: #f0f2f3; display: flex; flex-direction: column; justify-content: space-between; }
-    .project.featured .project-left { background: #efe8c9; }
-    .project.coffee .project-left { background: #d7c2ad; }
-    .project.market .project-left { background: #d7eadc; }
-    .project-index { font-size: 12px; color: #606870; font-weight: 800; letter-spacing: .08em; }
-    .project-name { margin: 8px 0 10px; font-size: 33px; letter-spacing: -0.04em; }
-    .project-summary { margin: 0; font-size: 14px; color: #41484f; }
-    .project-meta { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 30px; font-size: 12px; }
-    .project-meta b { display: block; margin-bottom: 4px; color: #23272b; }
-    .project-meta span { color: #58616a; }
-
-    .project-right { padding: 34px; }
-    .project-right h4 { margin: 0 0 18px; font-size: 14px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
-    .case { padding: 17px 0; border-top: 1px solid var(--line); }
-    .case:first-of-type { border-top: 0; padding-top: 0; }
-    .case-title { margin: 0 0 6px; font-weight: 800; font-size: 17px; }
-    .case p { margin: 0; color: #525a63; font-size: 14px; }
-    .case strong { color: var(--text); }
-    .project-links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 22px; }
-
-    .timeline { display: grid; gap: 14px; }
-    .timeline-item {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-md);
-      padding: 28px;
-      display: grid;
-      grid-template-columns: 210px 1fr;
-      gap: 24px;
+    .compact h3 {
+      margin: 0 0 3px;
+      font-size: 16px;
+      letter-spacing: -0.02em;
     }
-    .timeline-item .period { color: var(--muted); font-size: 13px; }
-    .timeline-item h3 { margin: 0 0 8px; font-size: 20px; }
-    .timeline-item p { margin: 0; color: #59616a; font-size: 14px; }
-    .timeline-item ul { margin: 14px 0 0; padding-left: 20px; color: #4d5560; font-size: 14px; }
-
-    .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    .edu-card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-md);
-      padding: 28px;
-    }
-    .edu-card h3 { margin: 0 0 8px; }
-    .edu-card p { margin: 0; color: var(--muted); font-size: 14px; }
-    .chip-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
-    .chip { padding: 7px 10px; background: #f2f4f5; border-radius: 999px; font-size: 12px; }
-
-    .contact {
-      margin: 72px 0 30px;
-      padding: 44px;
-      border-radius: 28px;
-      background: var(--dark);
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 30px;
-    }
-    .contact h2 { margin: 0; font-size: 30px; letter-spacing: -0.04em; }
-    .contact p { margin: 7px 0 0; color: #b9c2ca; font-size: 14px; }
-    .contact .button { border-color: #43515c; background: #19242d; color: #fff; }
-    footer { padding: 18px 0 42px; color: #8a929a; font-size: 12px; }
-
-    @media (max-width: 900px) {
-      .nav-links { display: none; }
-      .hero { padding-top: 52px; }
-      .hero-grid, .project { grid-template-columns: 1fr; }
-      .metric-grid, .strength-grid { grid-template-columns: 1fr 1fr; }
-      .project { min-height: auto; }
-      .project-left { min-height: 300px; }
+    .compact p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
     }
 
-    @media (max-width: 620px) {
-      .wrap { width: min(100% - 24px, 1160px); }
-      .hero-main, .hero-side { padding: 28px; border-radius: 20px; }
-      .hero-main { padding-top: 34px; }
-      .hero-copy { font-size: 16px; }
-      .metric-grid, .strength-grid, .edu-grid { grid-template-columns: 1fr; }
-      .section-head { align-items: start; flex-direction: column; }
-      .section-head h2 { font-size: 29px; }
-      .timeline-item { grid-template-columns: 1fr; gap: 8px; }
-      .project-left, .project-right { padding: 25px; }
-      .project-name { font-size: 28px; }
-      .contact { padding: 30px; flex-direction: column; align-items: flex-start; }
+    .footer {
+      padding-top: 30px;
+      color: #9aa0a8;
+      font-size: 12px;
+      text-align: center;
+    }
+
+    @media (max-width: 760px) {
+      .page { width: min(100% - 28px, var(--max)); padding-top: 44px; }
+      .profile { grid-template-columns: 1fr; gap: 18px; }
+      .name { font-size: 36px; }
+      .status { width: fit-content; }
+      section { grid-template-columns: 1fr; gap: 20px; padding: 34px 0; }
+      .section-title { font-size: 15px; color: var(--accent); }
+      .item-head { flex-direction: column; gap: 4px; }
+      .period { padding-top: 0; }
+      .compact-grid { grid-template-columns: 1fr; gap: 18px; }
     }
   </style>
 </head>
 <body>
-  <nav class="nav">
-    <div class="wrap nav-inner">
-      <a class="brand" href="#top">김현승 · Backend Developer</a>
-      <div class="nav-links">
-        <a href="#strengths">강점</a>
-        <a href="#projects">프로젝트</a>
-        <a href="#career">경력</a>
-        <a href="#education">학력·자격</a>
-      </div>
-    </div>
-  </nav>
-
-  <main id="top">
-    <div class="wrap hero">
-      <div class="hero-grid">
-        <div class="hero-main">
-          <div class="eyebrow">JAVA · SPRING BACKEND</div>
-          <h1>정확한 거래 흐름과<br><span class="hero-title-accent">신뢰할 수 있는 결과</span>를 만드는<br>백엔드 개발자 김현승입니다.</h1>
-          <p class="hero-copy">
-            7년간 육군 재정장교로 근무하며 예산·회계 데이터의 정확성을 관리했습니다.
-            개발자로 전환한 뒤에는 Java·Spring 기반 프로젝트에서 결제·환불·정산, 동시성 제어,
-            성능 개선, AI 검수와 AWS 운영을 경험했습니다. 문제를 발견하면 원인을 측정하고,
-            기술을 선택한 이유와 검증 결과까지 설명할 수 있는 개발을 지향합니다.
-          </p>
-          <div class="hero-actions">
-            <a class="button primary" href="https://github.com/hyeonseung-dev" target="_blank" rel="noopener">GitHub 보기</a>
-            <a class="button" href="https://velog.io/@khs0305/posts" target="_blank" rel="noopener">기술 블로그</a>
-            <a class="button" href="mailto:glowup.khs@gmail.com">이메일</a>
-          </div>
+  <main class="page">
+    <header class="profile">
+      <div>
+        <h1 class="name">김현승</h1>
+        <p class="role">서버 / 백엔드 개발자</p>
+        <p class="headline">
+          7년간 육군 재정장교로 근무하며 예산·회계 업무의 정확성과 데이터 신뢰성을 관리했습니다.
+          개발자로 전환한 뒤 Java·Spring 기반 프로젝트에서 결제·환불·정산, 동시성 제어,
+          성능 개선과 AWS 운영을 경험했습니다. 맡은 문제를 끝까지 확인하고, 근거와 결과가 남는 개발을 지향합니다.
+        </p>
+        <div class="links">
+          <a href="mailto:glowup.khs@gmail.com">glowup.khs@gmail.com</a>
+          <a href="https://github.com/hyeonseung-dev" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://velog.io/@khs0305/posts" target="_blank" rel="noopener">기술 블로그</a>
         </div>
-
-        <aside class="hero-side">
-          <div>
-            <div class="label">Focus</div>
-            <h2>돈과 데이터가 오가는 시스템의 정합성과 운영 안정성</h2>
-            <p>결제·환불·정산과 같이 데이터가 어긋나면 안 되는 흐름에서 트랜잭션 경계, 락, 멱등성, 복구 가능성을 중요하게 봅니다.</p>
-          </div>
-          <div class="stack">
-            <span>Java 17</span><span>Spring Boot</span><span>JPA</span><span>MySQL</span><span>Redis</span><span>Kafka</span><span>AWS</span><span>Docker</span>
-          </div>
-        </aside>
       </div>
-    </div>
+      <div class="status">Java · Spring Backend</div>
+    </header>
 
-    <div class="wrap metrics">
-      <div class="metric-grid">
-        <div class="metric"><strong>7년</strong><span>육군 재정장교 경력</span></div>
-        <div class="metric"><strong>6,000건 · 580억</strong><span>연간 예산 집행·회계 처리 경험</span></div>
-        <div class="metric"><strong>83 → 7 SQL</strong><span>밥풀 조회 구조 개선</span></div>
-        <div class="metric"><strong>13.14s → 1.34s</strong><span>Stress p95 개선</span></div>
-      </div>
-    </div>
-
-    <section id="strengths" class="wrap">
-      <div class="section-head">
-        <h2>제가 강하게 설명할 수 있는 영역</h2>
-        <p>기술 이름을 많이 나열하기보다 실제 문제를 어떻게 정의하고, 왜 그 방법을 선택했으며, 어떤 결과로 검증했는지를 중심으로 정리했습니다.</p>
-      </div>
-      <div class="strength-grid">
-        <article class="strength"><div class="num">01</div><h3>거래 정합성 · 동시성</h3><p>결제·환불·포인트 차감처럼 결과가 어긋나면 안 되는 흐름에서 트랜잭션 경계, 비관적 락, 멱등 처리와 복구 전략을 설계했습니다.</p></article>
-        <article class="strength"><div class="num">02</div><h3>성능 병목 분석</h3><p>느린 API에 기술부터 추가하지 않고 쿼리 수, 실행 계획, 부하 테스트 결과를 기준으로 원인을 찾고 조회 구조와 인덱스를 개선했습니다.</p></article>
-        <article class="strength"><div class="num">03</div><h3>AI 기능 설계</h3><p>Rule과 LLM의 역할을 분리하고 Structured Output, 프롬프트 방어, 모델 비교 평가를 통해 비용과 안정성을 함께 검증했습니다.</p></article>
-        <article class="strength"><div class="num">04</div><h3>운영 · 장애 대응</h3><p>Outbox, Redis 장애 전환, 블루그린 배포, CloudWatch·Slack 이상 감지 등 구현 이후의 실패와 복구까지 직접 확인했습니다.</p></article>
+    <section>
+      <h2 class="section-title">소개</h2>
+      <div class="section-body intro">
+        <p>
+          군 복무 중 전역 약 2년 전부터 컴퓨터과학 학업을 병행해 학사 학위와 정보처리기사 자격을 취득했고,
+          전역 이후에도 Java·Spring 개발 교육과 프로젝트를 이어가며 백엔드 역량을 쌓았습니다.
+        </p>
+        <p>
+          최종 프로젝트에서는 4인 팀의 팀장을 맡아 일정과 개발 과정을 관리하고,
+          결제·환불·정산과 AI 검수 기능을 직접 설계·구현했습니다. 기능 구현에 그치지 않고
+          동시 요청, 서버 강제 종료, 부하 상황을 직접 재현해 정합성과 운영 안정성을 검증했습니다.
+        </p>
       </div>
     </section>
 
-    <section id="projects" class="wrap">
-      <div class="section-head">
-        <h2>대표 프로젝트</h2>
-        <p>최근 프로젝트 순으로, 기능 소개보다 문제 해결 과정과 검증 결과를 중심으로 정리했습니다.</p>
-      </div>
-
-      <div class="project-list">
-        <article class="project featured">
-          <div class="project-left">
-            <div>
-              <div class="project-index">PROJECT 01 · 2026.07–08</div>
-              <h3 class="project-name">BobFull(밥풀)</h3>
-              <p class="project-summary">1인 사용자를 위한 합석형 좌석 예약 서비스. 예약·결제·환불·정산·실시간 채팅과 AI 검수를 하나의 흐름으로 구현하고 정합성·성능·운영 안정성까지 검증했습니다.</p>
-            </div>
-            <div class="project-meta">
-              <div><b>TEAM</b><span>4인 팀</span></div>
-              <div><b>ROLE</b><span>팀장 / 결제·환불·정산·AI 검수</span></div>
-              <div><b>STACK</b><span>Spring Boot · JPA · MySQL · Redis · Kafka</span></div>
-              <div><b>OPS</b><span>AWS · Docker · GitHub Actions</span></div>
-            </div>
-          </div>
-          <div class="project-right">
-            <h4>핵심 문제 해결</h4>
-            <div class="case"><div class="case-title">결제 이후 후속 작업의 실패 경계 분리</div><p>결제·예약 확정과 채팅방 생성을 분리하고 Transactional Outbox를 적용했습니다. 서버 강제 종료 상황을 포함한 검증에서 <strong>후속 작업 유실 0건·중복 0건</strong>을 확인했습니다.</p></div>
-            <div class="case"><div class="case-title">회차 조회 SQL 83건 → 7건</div><p>연관 데이터 묶음 조회, 메모리 Map 조립, 인덱스와 캐시 적용으로 SQL을 <strong>91.6% 감소</strong>시켰고 Stress p95를 <strong>13.14초 → 1.34초</strong>로 개선했습니다.</p></div>
-            <div class="case"><div class="case-title">AI 검수 호출·비용 최적화</div><p>명백한 위반은 Rule이 처리하고 문맥 판단만 LLM에 맡겨 <strong>호출 18.2%, 토큰 18.3%</strong>를 절감했습니다. Structured Output과 프롬프트 방어 규칙도 적용했습니다.</p></div>
-            <div class="case"><div class="case-title">운영 구조 개선</div><p>Redis와 Kafka를 앱 서버에서 분리하고 Blue-Green 배포를 적용해 약 <strong>43초의 배포 중단 시간을 0초</strong>로 줄이고 롤백 가능한 구조를 검증했습니다.</p></div>
-            <div class="project-links"><a class="button primary" href="https://github.com/bobfull-project/bobfull-backend" target="_blank" rel="noopener">Backend Repository</a><a class="button" href="https://github.com/bobfull-project/bobfull-docs" target="_blank" rel="noopener">Docs</a></div>
-          </div>
-        </article>
-
-        <article class="project coffee">
-          <div class="project-left">
-            <div>
-              <div class="project-index">PROJECT 02 · 2026.07</div>
-              <h3 class="project-name">Coffee Order System</h3>
-              <p class="project-summary">주문·포인트·인기 메뉴 API를 구현한 뒤 동시성, 인덱스, MySQL 읽기/쓰기 분리, Redis 장애 복구를 단계적으로 검증한 1인 백엔드 프로젝트입니다.</p>
-            </div>
-            <div class="project-meta">
-              <div><b>TEAM</b><span>1인</span></div>
-              <div><b>ROLE</b><span>백엔드·인프라 전체 설계/구현</span></div>
-              <div><b>STACK</b><span>Spring Boot · JPA · MySQL · Redis</span></div>
-              <div><b>TEST</b><span>K6 · JUnit · EXPLAIN ANALYZE</span></div>
-            </div>
-          </div>
-          <div class="project-right">
-            <h4>핵심 문제 해결</h4>
-            <div class="case"><div class="case-title">동시 주문 Lost Update 방지</div><p>10,000포인트 사용자가 3,000포인트 주문을 동시에 10건 요청하도록 재현하고 비관적 락을 적용해 <strong>3건 성공·7건 실패·최종 잔액 1,000P</strong>로 정합성을 검증했습니다.</p></div>
-            <div class="case"><div class="case-title">복합 인덱스로 인기 메뉴 집계 63.1% 개선</div><p>주문 50만 건 환경에서 여러 인덱스 후보를 비교해 <strong>179ms → 66ms</strong>로 단축하고 (menu_id, ordered_at, status) 인덱스를 선택했습니다.</p></div>
-            <div class="case"><div class="case-title">Primary / Replica 읽기·쓰기 분리</div><p>readOnly 트랜잭션은 Replica로, 주문·포인트 차감·락은 Primary로 라우팅하고 실제 요청이 의도한 DB로 전달되는지 검증했습니다.</p></div>
-            <div class="case"><div class="case-title">Redis 장애에도 서비스 유지</div><p>Sentinel 3대를 구성해 Master 자동 승격을 확인하고, Redis 전체 장애 시 MySQL fallback으로 핵심 API가 계속 동작하는지 확인했습니다.</p></div>
-            <div class="project-links"><a class="button primary" href="https://github.com/hyeonseung-dev/coffee-order-system" target="_blank" rel="noopener">Repository</a></div>
-          </div>
-        </article>
-
-        <article class="project market">
-          <div class="project-left">
-            <div>
-              <div class="project-index">PROJECT 03 · 2026.06–07</div>
-              <h3 class="project-name">5pringUsedMarket</h3>
-              <p class="project-summary">중고 물품 거래를 중심으로 JWT 인증·인가, 이미지 업로드, 마이페이지, 실시간 채팅, 선착순 쿠폰과 AWS 배포까지 경험한 팀 프로젝트입니다.</p>
-            </div>
-            <div class="project-meta">
-              <div><b>TEAM</b><span>백엔드 4명</span></div>
-              <div><b>ROLE</b><span>인증·회원 / 이미지 / CI/CD·AWS</span></div>
-              <div><b>STACK</b><span>Spring Security · JWT · Redis · S3</span></div>
-              <div><b>DEPLOY</b><span>EC2 · ECR · GitHub Actions</span></div>
-            </div>
-          </div>
-          <div class="project-right">
-            <h4>핵심 문제 해결</h4>
-            <div class="case"><div class="case-title">JWT 로그아웃·재발급 정책 설계</div><p>로그아웃한 Access Token은 남은 만료 시간 동안 Redis Blacklist로 차단하고, Refresh Token은 저장값 일치 시에만 교체하는 Rotation을 적용했습니다.</p></div>
-            <div class="case"><div class="case-title">S3 Presigned URL로 이미지 업로드 경로 분리</div><p>이미지 바이트가 애플리케이션 서버를 거치지 않도록 클라이언트가 S3에 직접 업로드하게 하고 DB에는 imageKey만 저장했습니다.</p></div>
-            <div class="case"><div class="case-title">GitHub Actions와 AWS로 CI/CD 자동화</div><p>테스트·빌드·Docker 이미지 생성·ECR Push·EC2 배포를 하나의 흐름으로 연결하고 OIDC 기반 임시 권한과 배포 후 Health Check·Rollback을 적용했습니다.</p></div>
-            <div class="project-links"><a class="button primary" href="https://github.com/gpekd5/5pringUsedMarket" target="_blank" rel="noopener">Team Repository</a></div>
-          </div>
-        </article>
+    <section>
+      <h2 class="section-title">기술</h2>
+      <div class="section-body skills">
+        <span class="skill">Java 17</span>
+        <span class="skill">Spring Boot</span>
+        <span class="skill">Spring Security</span>
+        <span class="skill">JPA</span>
+        <span class="skill">MySQL</span>
+        <span class="skill">Redis / Valkey</span>
+        <span class="skill">Kafka</span>
+        <span class="skill">Docker</span>
+        <span class="skill">AWS EC2</span>
+        <span class="skill">AWS S3</span>
+        <span class="skill">GitHub Actions</span>
+        <span class="skill">PortOne</span>
+        <span class="skill">K6</span>
+        <span class="skill">JUnit</span>
       </div>
     </section>
 
-    <section id="career" class="wrap">
-      <div class="section-head"><h2>경력</h2><p>개발 이전 경력도 정확성과 검증, 업무 구조 개선이라는 관점에서 현재 백엔드 역량과 연결하고 있습니다.</p></div>
-      <div class="timeline">
-        <article class="timeline-item">
-          <div><strong>대한민국 육군 재정장교</strong><div class="period">2019.07 – 2026.06</div></div>
-          <div>
-            <h3>예산·회계 데이터의 정확성과 신뢰성 관리</h3>
-            <p>연간 약 6,000건·580억 원 규모의 예산 집행 및 회계 처리 업무를 수행했습니다.</p>
-            <ul>
-              <li>약 100명의 급여·4대보험 결산에서 반복되던 금액 차이를 원본 데이터 기반 자동 계산·검증 방식으로 개선</li>
-              <li>중기계획 216건·6,703억 원, 예산편성 39건·644억 원 규모의 소요 제기 업무 수행</li>
-              <li>여러 부서와 데이터를 대조하고 오류 원인을 확인해 일관된 기준으로 처리하는 업무 경험 축적</li>
-            </ul>
+    <section>
+      <h2 class="section-title">프로젝트</h2>
+      <div class="section-body">
+        <article class="item">
+          <div class="item-head">
+            <div class="item-title-wrap">
+              <h3 class="item-title">BobFull(밥풀) 백엔드</h3>
+              <p class="item-subtitle">4인 팀 · 팀장 · 결제·환불·정산·AI 검수 담당</p>
+            </div>
+            <div class="period">2026.07 ~ 2026.08</div>
           </div>
+          <p class="item-summary">
+            제주 1인 사용자를 대상으로 합석 좌석 예약과 예약금 결제·환불·정산,
+            실시간 채팅과 AI 검수를 제공하는 Spring Boot 백엔드 프로젝트입니다.
+          </p>
+          <ul class="bullets">
+            <li><strong>Transactional Outbox</strong>로 결제 확정과 후속 작업의 실패 경계를 분리하고, 서버 강제 종료 검증에서 후속 작업 <strong>유실 0건·중복 0건</strong>을 확인했습니다.</li>
+            <li>회차 20건 조회 시 반복 조회 구조를 묶음 조회와 메모리 Map 조립으로 개선해 SQL <strong>83건 → 7건</strong>, Stress p95 <strong>13.14초 → 1.34초</strong>로 개선했습니다.</li>
+            <li>규칙 기반 선처리와 LLM 역할 분리로 AI 검수 호출을 <strong>18.2%</strong>, 토큰 사용량을 <strong>18.3%</strong> 절감했습니다.</li>
+            <li>Redis와 Kafka를 애플리케이션 서버에서 분리하고 Blue-Green 배포를 적용해 기존 약 43초의 배포 중단 시간을 <strong>0초</strong>로 개선했습니다.</li>
+          </ul>
+          <div class="tech"><span>Java</span><span>Spring Boot</span><span>JPA</span><span>MySQL</span><span>Valkey</span><span>Kafka</span><span>AWS</span><span>Docker</span></div>
+          <a class="project-link" href="https://github.com/bobfull-project/bobfull-backend" target="_blank" rel="noopener">GitHub 저장소 ↗</a>
+        </article>
+
+        <article class="item">
+          <div class="item-head">
+            <div class="item-title-wrap">
+              <h3 class="item-title">Coffee Order System</h3>
+              <p class="item-subtitle">1인 프로젝트 · 백엔드·인프라 전체 설계 및 구현</p>
+            </div>
+            <div class="period">2026.07</div>
+          </div>
+          <p class="item-summary">
+            동시 주문, 인기 메뉴 집계, 캐시 장애, DB 읽기·쓰기 분리 등 실제 운영 상황을 가정해 검증한 주문 백엔드 프로젝트입니다.
+          </p>
+          <ul class="bullets">
+            <li>비관적 락을 적용해 10,000포인트에서 3,000포인트 주문 10건을 동시에 요청했을 때 <strong>3건 성공·7건 실패, 최종 잔액 1,000포인트</strong>로 정합성을 확인했습니다.</li>
+            <li>주문 50만 건 환경에서 복합 인덱스를 비교해 인기 메뉴 집계 중앙값을 <strong>179ms → 66ms</strong>로 약 63% 개선했습니다.</li>
+            <li>readOnly 트랜잭션은 Replica, 주문·포인트 차감은 Primary로 라우팅하고 실제 요청으로 경로를 검증했습니다.</li>
+            <li>Redis Sentinel Master 장애 전환과 Redis 전체 장애 시 MySQL fallback을 직접 검증했습니다.</li>
+          </ul>
+          <div class="tech"><span>Spring Boot</span><span>MySQL</span><span>Redis Sentinel</span><span>Docker</span><span>K6</span><span>JUnit</span></div>
+          <a class="project-link" href="https://github.com/hyeonseung-dev/coffee-order-system" target="_blank" rel="noopener">GitHub 저장소 ↗</a>
+        </article>
+
+        <article class="item">
+          <div class="item-head">
+            <div class="item-title-wrap">
+              <h3 class="item-title">5pringUsedMarket</h3>
+              <p class="item-subtitle">4인 팀 · 인증·회원·이미지 업로드·CI/CD 담당</p>
+            </div>
+            <div class="period">2026.06 ~ 2026.07</div>
+          </div>
+          <p class="item-summary">
+            상품 등록·검색, 선착순 쿠폰, 실시간 채팅, JWT 인증·인가를 구현한 Spring Boot 기반 중고거래 플랫폼입니다.
+          </p>
+          <ul class="bullets">
+            <li>로그아웃 Access Token은 Redis Blacklist, Refresh Token은 저장 토큰만 재발급에 사용하도록 구성하고 Rotation을 적용했습니다.</li>
+            <li>S3 Presigned URL을 발급해 클라이언트가 S3에 직접 업로드하도록 하여 이미지 파일이 애플리케이션 서버를 거치지 않도록 분리했습니다.</li>
+            <li>GitHub Actions에서 테스트·빌드 후 Docker 이미지를 ECR에 저장하고 EC2에 배포하는 CI/CD 흐름을 구축했습니다.</li>
+          </ul>
+          <div class="tech"><span>Spring Security</span><span>JWT</span><span>Redis</span><span>AWS S3</span><span>EC2</span><span>ECR</span><span>GitHub Actions</span></div>
+          <a class="project-link" href="https://github.com/gpekd5/5pringUsedMarket" target="_blank" rel="noopener">팀 GitHub 저장소 ↗</a>
+        </article>
+
+        <article class="item">
+          <div class="item-head">
+            <div class="item-title-wrap">
+              <h3 class="item-title">PortOne 기반 커머스 결제 시스템</h3>
+              <p class="item-subtitle">4인 팀 · 팀장 · 결제·환불·웹훅 담당</p>
+            </div>
+            <div class="period">2026.06</div>
+          </div>
+          <p class="item-summary">
+            주문·포인트부터 PortOne 결제·환불·웹훅까지 커머스의 주문·결제 흐름을 구현하고 외부 PG와 내부 데이터의 정합성을 검증했습니다.
+          </p>
+          <ul class="bullets">
+            <li>외부 PG 조회와 내부 상태 변경을 분리하고, 실제 결제 상태와 서버 결제 금액이 일치하는 경우에만 결제를 확정하도록 구성했습니다.</li>
+            <li>환불 요청 선점, 결제 단위 비관적 락, PortOne 멱등성 키를 적용해 동시·재시도 요청에서 중복·초과 환불을 방지했습니다.</li>
+            <li>웹훅 서명 검증과 이벤트 ID 기반 멱등 처리를 적용해 중복 이벤트는 무시하고 실패한 이벤트는 재전송으로 복구할 수 있도록 했습니다.</li>
+          </ul>
+          <div class="tech"><span>Java</span><span>Spring Boot</span><span>JPA</span><span>MySQL</span><span>PortOne V2</span><span>JUnit</span></div>
         </article>
       </div>
     </section>
 
-    <section id="education" class="wrap">
-      <div class="section-head"><h2>학력 · 자격</h2><p>군 복무와 학업을 병행하며 컴퓨터과학 학위와 정보처리기사 자격을 취득했습니다.</p></div>
-      <div class="edu-grid">
-        <div class="edu-card"><h3>한국방송통신대학교 · 컴퓨터과학과</h3><p>2024.03 – 2026.02 졸업 · 평균학점 3.8</p><div class="chip-row"><span class="chip">자료구조</span><span class="chip">데이터베이스</span><span class="chip">운영체제</span><span class="chip">클라우드 컴퓨팅</span></div></div>
-        <div class="edu-card"><h3>서경대학교 · 군사학과 / 회계세무 복수전공</h3><p>2015.03 – 2019.02 졸업 · 평균학점 3.42</p><div class="chip-row"><span class="chip">회계·세무</span><span class="chip">재무</span><span class="chip">조직 운영</span></div></div>
-        <div class="edu-card"><h3>자격</h3><p>정보처리기사 · 컴퓨터활용능력 1급 · 회계관리 2급 · JLPT N1</p><div class="chip-row"><span class="chip">정보처리기사 2025.12</span><span class="chip">컴퓨터활용능력 1급</span><span class="chip">회계관리 2급</span><span class="chip">JLPT N1</span></div></div>
-        <div class="edu-card"><h3>수상</h3><p>컴퓨터과학 학업과 군 재정 업무에서 성과를 인정받았습니다.</p><div class="chip-row"><span class="chip">한국방송통신대학교 성적우수상</span><span class="chip">전력운영비 예산편성 유공 표창</span><span class="chip">국가회계결산 유공 표창</span></div></div>
+    <section>
+      <h2 class="section-title">경력</h2>
+      <div class="section-body">
+        <article class="item">
+          <div class="item-head">
+            <div class="item-title-wrap">
+              <h3 class="item-title">대한민국 육군 · 재정장교</h3>
+              <p class="item-subtitle">예산 집행·결산·급여·4대보험·중기계획 등 재정 운영</p>
+            </div>
+            <div class="period">2019.07 ~ 2026.06</div>
+          </div>
+          <ul class="bullets">
+            <li>연간 약 <strong>6,000건·580억 원</strong> 규모의 예산 집행 및 회계 처리 업무를 수행했습니다.</li>
+            <li>민간근로자 약 100명의 급여·4대보험 결산에서 공단 원본 데이터와 급여 자료를 연결해 반복적인 금액 차이를 자동 계산·검증하는 방식으로 개선했습니다.</li>
+            <li>중기계획 <strong>216건·6,703억 원</strong>, 예산편성 <strong>39건·644억 원</strong> 규모의 소요 제기 업무를 수행했습니다.</li>
+            <li>국가회계장교로 근무하며 비정상 선급금·건설중인건물·장기미지급금 등 약 <strong>120건·100억 원</strong> 규모의 장기 미결 계정을 정리했습니다.</li>
+          </ul>
+        </article>
       </div>
     </section>
 
-    <div class="wrap contact">
-      <div><h2>문제를 끝까지 확인하고 결과로 검증하는 개발자가 되겠습니다.</h2><p>Java / Spring Backend Developer · 결제·정산·회계와 데이터 정합성이 중요한 도메인에 강점이 있습니다.</p></div>
-      <div class="hero-actions"><a class="button" href="mailto:glowup.khs@gmail.com">glowup.khs@gmail.com</a><a class="button" href="https://github.com/hyeonseung-dev" target="_blank" rel="noopener">GitHub</a></div>
-    </div>
+    <section>
+      <h2 class="section-title">수상</h2>
+      <div class="section-body compact-grid">
+        <div class="compact"><h3>한국방송통신대학교 성적우수상</h3><p>2026.02 · 컴퓨터과학 학업 성과</p></div>
+        <div class="compact"><h3>전력운영비 예산편성 유공 표창</h3><p>2025.06 · 5군단장 개인표창</p></div>
+        <div class="compact"><h3>국가회계결산 유공 표창</h3><p>2022.05 · 재정병과장 개인표창</p></div>
+        <div class="compact"><h3>교육성적 우수 표창</h3><p>2019.10 · 신임장교 지휘참모과정</p></div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">학력</h2>
+      <div class="section-body compact-grid">
+        <div class="compact">
+          <h3>한국방송통신대학교 · 컴퓨터과학과</h3>
+          <p>2024.03 ~ 2026.02 · 졸업 · 평균학점 3.8</p>
+        </div>
+        <div class="compact">
+          <h3>서경대학교 · 군사학과 / 회계세무 복수전공</h3>
+          <p>2015.03 ~ 2019.02 · 졸업 · 평균학점 3.42</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">자격</h2>
+      <div class="section-body compact-grid">
+        <div class="compact"><h3>정보처리기사</h3><p>2025.12 최종합격</p></div>
+        <div class="compact"><h3>컴퓨터활용능력 1급</h3><p>2018.11 합격</p></div>
+        <div class="compact"><h3>회계관리 2급</h3><p>2022.11 합격</p></div>
+        <div class="compact"><h3>JLPT N1</h3><p>2018.07 합격</p></div>
+      </div>
+    </section>
+
+    <div class="footer">김현승 · Backend Developer Resume</div>
   </main>
-
-  <footer><div class="wrap">Last updated · 2026.08 · Kim Hyeonseung Backend Portfolio</div></footer>
 </body>
 </html>
